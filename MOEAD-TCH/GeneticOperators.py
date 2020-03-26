@@ -4,14 +4,6 @@ import random
 #Check local parameters
 
 
-#Uniforme crossover
-def uniCrox(p1, p2, gamma = 0.1):
-    alpha = np.random.uniform(-gamma, 1+gamma, *p1.shape)
-    c1 = abs(alpha*p1 + (1-alpha)*p2)
-    c2 = abs(alpha*p2 + (1-alpha)*p1)
-
-    return c1, c2
-
 #SBX with repair option 
 def SBX_with_repair(n1,n2,eta, a = 0, b = 1): 
 
