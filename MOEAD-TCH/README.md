@@ -13,7 +13,7 @@
 ![](Figure/Result.png)
 
 ### DTLZ1
--H = 30 
+-H = 30  
 -Generations = 5000  
 
 ![](Figure/DTLZ1.png)
