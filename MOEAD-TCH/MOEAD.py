@@ -30,15 +30,14 @@ def checkDominance(cost):
 #Step 0, generate weight vectors 
 def generateVectors(nProb, H):
 
-    vet = np.array(range(H+1))
-    vet = vet /H
-
+    vet=np.linspace(0,1,H+1)
     perm = product(vet, repeat=nProb)
+    # perm = permutations(vet,nProb)
     vectors = []
-
+    sums = []
     for i in list(perm):
-       
-        if sum(i) == 1:
+    #    vectors.append(i)
+        if round(sum(i),2) == 1:
             vectors.append(i)  
 
     return (vectors)
