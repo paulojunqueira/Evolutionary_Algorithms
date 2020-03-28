@@ -2,14 +2,21 @@
 -This is a python implementation of MOEA/D [1] with tchebycheff decomposition function, "MOEAD.py".  
 -As in the original paper, was used Simulated Binary Crossover and Polynomial Mutation, "GeneticOperators.py".  
 -It was tested on ZDT 1-4 [2], "BenchmarkFunctions.py".  
-  
--Obs: For now, just tested for 2 objectives functions. :)
+-For 3 Objectives test, it was used the module benchmarks from deap and the DTLZ1  
+
 
 ## Experiments Results
--H =299  
--Generations: 2000  
+### ZDT1-4
+-H = 299  
+-Generations = 2000  
 
 ![](Figure/Result.png)
+
+### DTLZ1
+-H = 30 
+-Generations = 5000  
+
+![](Figure/DTLZ1.png)
 
 
 ## References
