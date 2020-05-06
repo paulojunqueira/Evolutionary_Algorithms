@@ -140,6 +140,7 @@ for gen in range(generation):
             if gChild <= g[n]:
                 pop[n] = c1
                 cost[n] = costChild
+                g[n] = gChild
         #Update z
         z = np.vstack((z,cost)).min(axis = 0)
 
