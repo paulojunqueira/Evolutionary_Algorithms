@@ -6,7 +6,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 from itertools import  combinations_with_replacement, product
 import math
-import random 
+import random
+import operator as op
+from functools import reduce
 
 
 # ------------------------------ Functions -----------------------
@@ -29,18 +31,24 @@ def checkDominance(cost):
 
 #Step 0, generate weight vectors 
 def generateVectors(nProb, H):
+    def ncr(n, r):
+        r = min(r, n-r)
+        numer = reduce(op.mul, range(n, n-r, -1), 1)
+        denom = reduce(op.mul, range(1, r+1), 1)
+        return numer / denom
 
-    vet=np.linspace(0,1,H+1)
-    perm = product(vet, repeat=nProb)
-    # perm = permutations(vet,nProb)
-    vectors = []
-    sums = []
-    for i in list(perm):
-    #    vectors.append(i)
-        if round(sum(i),2) == 1:
-            vectors.append(i)  
+    nRef = int(ncr((nProb+H-1), (nProb-1)))
 
-    return (vectors)
+    vectors = np.zeros((nProb,nRef))
+    combinations = np.array([(i) for  i in combinations_with_replacement(range(1,(nProb+1)),H)])
+
+    for i in range(nProb):
+        aux= np.array(list(map(lambda x: x == (i+1), (combinations))))
+        for j in range(nRef):
+            vectors[i,j] = sum(aux[j,])
+
+    
+    return np.transpose((vectors/H))
  
 #Step 1.2 Neighborhood - Euclidiean Distances
 def calcNeighborhood(vets,T):
